@@ -12,14 +12,11 @@ async function getMe() {
 function protectLinks(isLogged) {
   document.querySelectorAll(".protected").forEach((el) => {
     el.addEventListener("click", (e) => {
-      // si es <a> y NO hay sesión -> manda a login
       if (!isLogged) {
         e.preventDefault();
         window.location.href = "/login";
         return;
       }
-
-      // para botones/divs con data-go
       const go = el.dataset.go;
       if (go) window.location.href = go;
     });
@@ -35,30 +32,83 @@ function setLoggedUI(user) {
   const requireTexts = document.querySelectorAll(".require-session-text");
 
   if (user) {
-    // topbar
     userBadge.textContent = `👋 ${user.name}`;
     userBadge.classList.remove("hidden");
     logoutBtn.classList.remove("hidden");
     loginLink.classList.add("hidden");
 
-    // index: ocultar CTA y letreros 🔒
     if (ctaLoginBtn) ctaLoginBtn.classList.add("hidden");
     requireTexts.forEach((el) => el.classList.add("hidden"));
 
-    // logout
     logoutBtn.addEventListener("click", async () => {
       await fetch("/auth/logout", { method: "POST", credentials: "same-origin" });
       window.location.reload();
     });
   } else {
-    // sin sesión: mostrar CTA y textos 🔒
     if (ctaLoginBtn) ctaLoginBtn.classList.remove("hidden");
     requireTexts.forEach((el) => el.classList.remove("hidden"));
   }
 }
 
+/* ===== GALERÍA 3D: círculo + mouse controla giro/velocidad ===== */
+function initGallery3D() {
+  const viewport = document.getElementById("galleryViewport");
+  const ring = document.getElementById("galleryRing");
+  if (!viewport || !ring) return;
+
+  const cards = Array.from(ring.querySelectorAll(".gallery-card"));
+  const count = cards.length;
+  if (count < 3) return;
+
+  // Radio del círculo 3D
+  const radius = count <= 8 ? 260 : 300;
+  const step = 360 / count;
+
+  // Colocar cards en círculo (3D)
+  cards.forEach((card, i) => {
+    card.style.transform =
+      `rotateY(${i * step}deg) translateZ(${radius}px) translateX(65px) translateY(70px)`;
+  });
+
+  // Animación
+  let rot = 0;
+  let speed = 0.12;
+  let targetSpeed = 0.12;
+  let tiltX = -12;
+
+  function animate() {
+    speed += (targetSpeed - speed) * 0.08;
+    rot += speed;
+
+    ring.style.setProperty("--rotY", `${rot}deg`);
+    ring.style.setProperty("--tiltX", `${tiltX}deg`);
+
+    requestAnimationFrame(animate);
+  }
+
+  viewport.addEventListener("mousemove", (e) => {
+    const rect = viewport.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;   // 0..1
+    const y = (e.clientY - rect.top) / rect.height;   // 0..1
+
+    const dir = (x - 0.5) * 2; // -1..1
+    targetSpeed = dir * 0.35;  // velocidad según izquierda/derecha
+
+    tiltX = -22 + (y * 20);    // inclinación según arriba/abajo
+  });
+
+  viewport.addEventListener("mouseleave", () => {
+    targetSpeed = 0.12;
+    tiltX = -12;
+  });
+
+  animate();
+}
+
+/* ===== INIT ===== */
 (async () => {
   const user = await getMe();
   setLoggedUI(user);
   protectLinks(!!user);
+  initGallery3D();
 })();

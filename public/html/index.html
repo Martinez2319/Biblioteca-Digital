@@ -91,23 +91,49 @@
       </div>
     </section>
 
-    <!-- ✅ RULETA (siempre visible) -->
-    <section class="roulette-section">
+    <!-- ✅ GALERÍA 3D (siempre visible, imágenes reales) -->
+    <section class="roulette-section full-width" id="gallerySection"></section>
       <h2 class="roulette-title">Descubre colecciones</h2>
 
-      <div class="wrapper">
-        <div class="inner" style="--quantity: 10;">
-          <div class="card protected" data-go="/categorias" style="--index: 0;--color-card: 142, 249, 252;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 1;--color-card: 142, 252, 204;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 2;--color-card: 142, 252, 157;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 3;--color-card: 215, 252, 142;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 4;--color-card: 252, 252, 142;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 5;--color-card: 252, 208, 142;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 6;--color-card: 252, 142, 142;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 7;--color-card: 252, 142, 239;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 8;--color-card: 204, 142, 252;"><div class="img"></div></div>
-          <div class="card protected" data-go="/categorias" style="--index: 9;--color-card: 142, 202, 252;"><div class="img"></div></div>
+      <div class="gallery-viewport" id="galleryViewport">
+        <div class="gallery-ring" id="galleryRing">
+
+          <!-- ✅ Cambia estas rutas por tus portadas reales en /public/covers/ -->
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro1.jpg" alt="Libro 1">
+          </button>
+
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro2.jpg" alt="Libro 2">
+          </button>
+
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro3.jpg" alt="Libro 3">
+          </button>
+
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro4.jpg" alt="Libro 4">
+          </button>
+
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro5.jpg" alt="Libro 5">
+          </button>
+
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro6.jpg" alt="Libro 6">
+          </button>
+
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro7.jpg" alt="Libro 7">
+          </button>
+
+          <button class="gallery-card protected" data-go="/categorias" type="button">
+            <img src="/covers/libro8.jpg" alt="Libro 8">
+          </button>
+
         </div>
+
+        <div class="gallery-fade"></div>
       </div>
 
       <p class="roulette-hint require-session-text">🔒 Requiere sesión para abrir colecciones</p>
