@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Biblioteca Digital</title>
+  <meta name="description" content="Biblioteca Digital: explora libros y recursos académicos." />
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">📚</div>
+      <div>
+        <div class="name">Biblioteca Digital</div>
+        <div class="tagline">Lectura elegante, acceso seguro</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="/" class="active">Inicio</a>
+      <a href="/categorias" class="protected">Categorías</a>
+      <a href="/favoritos" class="protected">Favoritos</a>
+      <a href="/perfil" class="protected">Perfil</a>
+    </nav>
+
+    <div class="auth">
+      <span id="userBadge" class="user-badge hidden"></span>
+      <a id="loginLink" class="btn btn-ghost" href="/login">Iniciar sesión</a>
+      <button id="logoutBtn" class="btn btn-solid hidden">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Explora conocimiento sin límites</h1>
+        <p>
+          Para entrar a categorías, favoritos o perfil, necesitas iniciar sesión.
+        </p>
+
+        <div class="cta">
+          <a class="btn btn-solid" href="/login" id="ctaLoginBtn">Entrar a mi cuenta</a>
+          <button class="btn btn-ghost protected" data-go="/categorias">Ver categorías</button>
+        </div>
+
+        <div class="chips">
+          <span>Programación</span>
+          <span>Matemáticas</span>
+          <span>Ciencias</span>
+          <span>Literatura</span>
+          <span>Historia</span>
+          <span>Tecnología</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="glass-card">
+          <div class="glass-title">Recomendados</div>
+
+          <div class="book">
+            <div class="cover c1"></div>
+            <div class="meta">
+              <div class="btitle">Introducción a la Programación</div>
+              <div class="bauthor">Colección académica</div>
+            </div>
+          </div>
+
+          <div class="book">
+            <div class="cover c2"></div>
+            <div class="meta">
+              <div class="btitle">Matemáticas Básicas</div>
+              <div class="bauthor">Colección académica</div>
+            </div>
+          </div>
+
+          <div class="book">
+            <div class="cover c3"></div>
+            <div class="meta">
+              <div class="btitle">Ciencia Moderna</div>
+              <div class="bauthor">Colección académica</div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <button class="btn btn-solid protected" data-go="/favoritos">Abrir Favoritos</button>
+          <small class="hint require-session-text">🔒 Requiere sesión</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ RULETA (siempre visible) -->
+    <section class="roulette-section">
+      <h2 class="roulette-title">Descubre colecciones</h2>
+
+      <div class="wrapper">
+        <div class="inner" style="--quantity: 10;">
+          <div class="card protected" data-go="/categorias" style="--index: 0;--color-card: 142, 249, 252;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 1;--color-card: 142, 252, 204;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 2;--color-card: 142, 252, 157;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 3;--color-card: 215, 252, 142;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 4;--color-card: 252, 252, 142;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 5;--color-card: 252, 208, 142;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 6;--color-card: 252, 142, 142;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 7;--color-card: 252, 142, 239;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 8;--color-card: 204, 142, 252;"><div class="img"></div></div>
+          <div class="card protected" data-go="/categorias" style="--index: 9;--color-card: 142, 202, 252;"><div class="img"></div></div>
+        </div>
+      </div>
+
+      <p class="roulette-hint require-session-text">🔒 Requiere sesión para abrir colecciones</p>
+    </section>
+
+    <section class="grid">
+      <article class="tile protected" data-go="/categorias">
+        <h3>Categorías</h3>
+        <p>Explora por tema: desde programación hasta literatura.</p>
+        <span class="lock require-session-text">🔒 Requiere sesión</span>
+      </article>
+
+      <article class="tile protected" data-go="/favoritos">
+        <h3>Favoritos</h3>
+        <p>Guarda tus libros y recursos preferidos.</p>
+        <span class="lock require-session-text">🔒 Requiere sesión</span>
+      </article>
+
+      <article class="tile protected" data-go="/perfil">
+        <h3>Perfil</h3>
+        <p>Tu información y tu progreso de lectura.</p>
+        <span class="lock require-session-text">🔒 Requiere sesión</span>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Biblioteca Digital | Proyecto académico</p>
+  </footer>
+
+  <script src="/javascript/index.js"></script>
+</body>
+</html>

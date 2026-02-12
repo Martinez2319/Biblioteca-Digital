@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+/* ===== BASE ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1f2937;
+  background:
+    radial-gradient(circle at top left, #e0ecff, transparent 40%),
+    radial-gradient(circle at bottom right, #fde7c7, transparent 40%),
+    #f6f8fb;
+  overflow-x: hidden;
+}
+
+a {
+  cursor: pointer;
+  transition: all 200ms linear;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.link {
+  color: #1e3a5f;
+}
+
+.link:hover {
+  color: #3b82f6;
+}
+
+p {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+h4 {
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+h6 span {
+  padding: 0 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1e3a5f;
+}
+
+/* ===== STRUCTURE ===== */
+.section {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.full-height {
+  min-height: 100vh;
+}
+
+/* ===== TOGGLE ===== */
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+
+.checkbox:checked + label,
+.checkbox:not(:checked) + label {
+  position: relative;
+  display: block;
+  width: 60px;
+  height: 16px;
+  border-radius: 8px;
+  margin: 10px auto;
+  cursor: pointer;
+  background-color: #dbeafe;
+}
+
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before {
+  position: absolute;
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #1e3a5f;
+  font-family: 'unicons';
+  content: '\eb4f';
+  top: -10px;
+  left: -10px;
+  line-height: 36px;
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+  transition: all 0.5s ease;
+}
+
+.checkbox:checked + label:before {
+  transform: translateX(44px) rotate(-270deg);
+}
+
+/* ===== CARD 3D ===== */
+.card-3d-wrap {
+  position: relative;
+  width: 440px;
+  max-width: 100%;
+  height: 420px;
+  perspective: 900px;
+  margin-top: 60px;
+}
+
+.card-3d-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all 600ms ease-out;
+  transform-style: preserve-3d;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  position: absolute;
+  border-radius: 18px;
+  box-shadow: 0 30px 60px rgba(30, 58, 95, 0.18);
+  backface-visibility: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
+  transform: rotateY(180deg);
+}
+
+/* ===== CONTENT ===== */
+.center-wrap {
+  position: absolute;
+  width: 100%;
+  padding: 0 35px;
+  top: 50%;
+  transform: translateY(-50%) translateZ(35px);
+  z-index: 20;
+}
+
+/* ===== FORM ===== */
+.form-group {
+  position: relative;
+}
+
+.form-style {
+  width: 100%;
+  padding: 13px 20px 13px 55px;
+  height: 48px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1f2937;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid #d0d7e2;
+  transition: all 200ms linear;
+}
+
+.form-style::placeholder {
+  color: #6b7280;
+}
+
+.form-style:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+/* ===== ICON ===== */
+.input-icon {
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 48px;
+  font-size: 22px;
+  line-height: 48px;
+  color: #3b82f6;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  height: 44px;
+  padding: 0 30px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(59,130,246,0.35);
+  transition: all 200ms linear;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(59,130,246,0.45);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+/* ===== MESSAGES ===== */
+#loginMsg,
+#registerMsg {
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+  color: #dc2626;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .card-3d-wrap {
+    width: 100%;
+    height: 440px;
+  }
+}
